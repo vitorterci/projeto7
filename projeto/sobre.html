@@ -78,36 +78,6 @@
             margin: 20px auto;
         }
 
-    
-    </style>
-</head>
-<body>
-    <header>
-        <div class="menu">
-            <span>INICIO</span>
-            <span>SOBRE NÓS</span>
-            <span>SUPORTE</span>
-        </div>
-        <div class="login">
-            <a href="perfil.html"><i class='bx bx-user-circle'></i></a>
-        </div>
-    </header>
-
-    <div class="section">
-        <div class="highlight">EGÍPCIOS</div>
-        <div class="content-box">texto</div>
-    </div>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #111;
-            color: white;
-            text-align: center;
-        }
-
         .carousel {
             background: #222;
             padding: 20px;
@@ -117,7 +87,7 @@
             justify-content: center;
             position: relative;
             width: 90%;
-            max-width: 600px;
+            max-width: 900px;
             margin: auto;
         }
 
@@ -142,15 +112,21 @@
         }
 
         .carousel-item img {
-            width: 80px;
-            height: 80px;
+            width: 500px;
+            height: 500px;
             border-radius: 10px;
         }
 
         .carousel-text {
-            text-align: left;
-            color: white;
-        }
+    text-align: left;
+    color: white;
+    max-width: 300px; /* Limite a largura do texto */
+    max-height: 900px; /* Limite a altura do texto */
+    text-overflow: ellipsis; /* Exibe reticências (...) se o texto for longo */
+}
+
+
+
 
         .carousel-button {
             position: absolute;
@@ -164,11 +140,49 @@
             border-radius: 50%;
         }
 
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    
+        .team-btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #303030;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    
+        .team-btn:hover {
+            background-color: #202020;
+        }
+
         .prev { left: 10px; }
         .next { right: 10px; }
+
+    
     </style>
 </head>
 <body>
+    <header>
+        <div class="menu">
+            <span>INICIO</span>
+            <span>SOBRE NÓS</span>
+            <span>SUPORTE</span>
+        </div>
+        <div class="login">
+            <a href="perfil.html"><i class='bx bx-user-circle'></i></a>
+        </div>
+    </header>
+
+    <div class="section">
+        <div class="highlight">EGÍPCIOS</div>
+        <div class="content-box"></div>
+    </div>
 
     <div class="carousel">
         <button class="carousel-button prev" onclick="mudarImagemCarrossel(-1)">&#10094;</button>
@@ -178,7 +192,8 @@
                 <div class="carousel-text">
                     <strong>Rafaele</strong>
                     <p>Líder (ditadora)</p>
-                </div>
+                    <h4></h4>
+                 </div>
             </div>
             <div class="carousel-item">
                 <img src="filipe.jpeg" alt="Filipe">
@@ -225,8 +240,26 @@
         </div>
         <button class="carousel-button next" onclick="mudarImagemCarrossel(1)">&#10095;</button>
     </div>
-
+    <div class="buttons-container">
+        <button class="team-btn" onclick="showMember(0)">Rafaele</button>
+        <button class="team-btn" onclick="showMember(1)">Filipe</button>
+        <button class="team-btn" onclick="showMember(2)">Ana</button>
+        <button class="team-btn" onclick="showMember(3)">Andrey</button>
+        <button class="team-btn" onclick="showMember(4)">Vitor</button>
+        <button class="team-btn" onclick="showMember(5)">Paulo</button>
+        <button class="team-btn" onclick="showMember(6)">Guilherme</button>
+    </div>
+    
     <script>
+        function showMember(index) {
+            // Remove a classe 'active' do item atual
+            const items = document.querySelectorAll('.carousel-item');
+            items.forEach(item => item.classList.remove('active'));
+            
+            // Adiciona a classe 'active' ao item do membro selecionado
+            items[index].classList.add('active');
+        }
+  
         let index = 0;
         const items = document.querySelectorAll('.carousel-item');
 
@@ -236,6 +269,7 @@
             items[index].classList.add('active');
         }
     </script>
+    
     <div class="section">
         <div class="highlight">COMO CRIAMOS ESTE SITE?</div>
         <div class="content-box">texto</div>
